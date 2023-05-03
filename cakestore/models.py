@@ -43,7 +43,7 @@ class Cart(models.Model):
 class Order(models.Model):
     product=models.ForeignKey(Cake,on_delete=models.CASCADE)
     address=models.CharField(max_length=200)
-    created_date=models.DateField(auto_now_add=True)
+    ordered_date=models.DateField(auto_now_add=True)
     pincode=models.PositiveIntegerField()
     statusoptions2=(
         ("shipped","shipped"),
@@ -71,3 +71,4 @@ class Review(models.Model):
         return self.comment
 
 
+#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
