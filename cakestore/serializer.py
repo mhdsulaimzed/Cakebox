@@ -12,12 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
         return User.objects.create_user(**validated_data)
     
 
-class CakeSerializer(serializers.ModelSerializer):
-    id=serializers.CharField(read_only=True)
 
-    class Meta:
-        model=Cake
-        fields=["id","name","shape","layer","image","weight","price"]
 
 class CartSerializer(serializers.ModelSerializer):
     id=serializers.CharField(read_only=True)
@@ -47,3 +42,12 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model=Review
         fields="__all__"
+
+
+class CakeSerializer(serializers.ModelSerializer):
+    id=serializers.CharField(read_only=True)
+    cake_reviews=ReviewSerializer(read_only=True,many=True)
+
+    class Meta:
+        model=Cake
+        fields=["id","name","shape","layer","image","weight","price","cake_reviews"]

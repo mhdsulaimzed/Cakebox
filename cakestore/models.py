@@ -24,6 +24,11 @@ class Cake(models.Model):
     weight=models.FloatField(default=1)
     price=models.PositiveIntegerField()
 
+    @property
+    def cake_reviews(self):
+        return Review.objects.filter(product=self)
+        
+
     def __str__(self):
         return self.name
 
